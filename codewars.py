@@ -1,8 +1,10 @@
 # 8 kyu
+from collections import Counter
 from fractions import Fraction
 from re import X
 from string import punctuation
 import math
+from typing import Dict
 
 
 def greet(name):
@@ -148,6 +150,10 @@ def square_digits(num):
     # https://www.codewars.com/kata/546e2562b03326a88e000020
     return int(''.join([str(int(i) ** 2) for i in str(num)]))
 
+
+def is_isogram(string):
+    # https://www.codewars.com/kata/54ba84be607a92aa900000f1/
+    return len(string.lower()) == len(set(string.lower()))
 # 6 kyu
 
 
@@ -218,3 +224,27 @@ def sum_fracts2(lst):
     if lst:
         ret = sum(Fraction(a, b) for (a, b) in lst)
         return ret.numerator if ret.denominator == 1 else [ret.numerator, ret.denominator]
+
+
+def backwards_prime(start, stop):
+    # https://www.codewars.com/kata/5539fecef69c483c5a000015
+    primes = []
+    backward_primes = []
+
+    for x in range(start, stop):
+        if all(x % i for i in range(2, x)):
+            primes.append(x)
+
+    for a in primes:
+        reversed_x = int(str(a)[::-1])
+        if reversed_x > 10 and all(reversed_x % i for i in range(2, reversed_x)):
+            backward_primes.append(a)
+
+    return backward_primes
+
+
+def find_it(seq):
+    # https://www.codewars.com/kata/54da5a58ea159efa38000836
+    for i in seq:
+        if seq.count(i) % 2 != 0:
+            return i
