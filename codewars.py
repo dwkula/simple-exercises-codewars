@@ -253,3 +253,7 @@ def find_it(seq):
 def solution(number):
     # https://www.codewars.com/kata/514b92a657cdc65150000006
     return sum([i for i in range(2, number) if i % 3 == 0 or i % 5 == 0])
+
+
+def test_new_change(s):
+    pass
