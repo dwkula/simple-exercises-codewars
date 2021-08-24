@@ -5,3 +5,5 @@ Zbiór rozwiązań dla różnych ćwiczeń z serwisu www.codewars.com z wykorzys
 
 -ENG-
 Collection of solutions for various exercises from www.codewars.com using Python language
+
+test
