@@ -2,7 +2,7 @@
 from collections import Counter
 from fractions import Fraction
 from re import X
-from string import punctuation
+from string import printable, punctuation
 import math
 from typing import Dict
 
@@ -248,3 +248,8 @@ def find_it(seq):
     for i in seq:
         if seq.count(i) % 2 != 0:
             return i
+
+
+def solution(number):
+    # https://www.codewars.com/kata/514b92a657cdc65150000006
+    return sum([i for i in range(2, number) if i % 3 == 0 or i % 5 == 0])
