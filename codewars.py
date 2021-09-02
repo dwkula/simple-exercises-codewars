@@ -1,4 +1,5 @@
 # 8 kyu
+import itertools
 from collections import Counter
 from fractions import Fraction
 from re import X
@@ -253,3 +254,48 @@ def find_it(seq):
 def solution(number):
     # https://www.codewars.com/kata/514b92a657cdc65150000006
     return sum([i for i in range(2, number) if i % 3 == 0 or i % 5 == 0])
+
+
+def array_diff(a, b):
+    # https://www.codewars.com/kata/523f5d21c841566fde000009
+    return [item for item in a if item not in b]
+
+
+def longest_repetition(chars):
+    # https://www.codewars.com/kata/586d6cefbcc21eed7a001155
+    max_count = 0
+    previous = None
+    max = None
+
+    if chars == '':
+        return ('', 0)
+
+    for char in chars:
+        if previous == char:
+            count += 1
+        else:
+            count = 1
+        if count > max_count:
+            max_count = count
+            max = char
+        previous = char
+    return (max, max_count)
+
+
+def high(x):
+    # https://www.codewars.com/kata/57eb8fcdf670e99d9b000272/train/python
+    pass
+
+
+# 5 kyu
+
+
+def move_zeros(array):
+    # https://www.codewars.com/kata/52597aa56021e91c93000cb0
+    zeros = array.count(0)
+    final = [number for number in array if number != 0]
+
+    for i in range(zeros):
+        final.append(0)
+
+    return final
