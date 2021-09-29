@@ -299,3 +299,232 @@ def move_zeros(array):
         final.append(0)
 
     return final
+
+
+def diamond(n):
+    x = 1
+    z = int((n-1)/2)
+    diamond = ''
+    for i in range(n):
+        if x <= n:
+            diamond += ' ' * z + '*' * x + ' ' * z+'\n'
+            x += 2
+            z -= 1
+
+    for k in range(n):
+
+        x -= 2
+        z += 1
+        diamond += ' ' * z + '*' * x + ' ' * z+'\n'
+    return diamond
+
+
+# function for each number 0-9
+# function math operations: plus, minus, times, dividedBy
+# each calc = 1 operation and 2 numbers
+# the most outer - left operand, the most inner - right operand
+# division = int div, rounding
+def zero(operand=None):
+    if operand is None:
+        return 0
+    if operand[0] == '+':
+        return operand[1] + 0
+    if operand[0] == '*':
+        return operand[1] * 0
+    if operand[0] == '//':
+        if 0 <= operand[1]:
+            return 0 // operand[1]
+        else:
+            return 0
+    if operand[0] == '-':
+        if 0 <= operand[1]:
+            return 0 - operand[1]
+        else:
+            return abs(0 - operand[1])
+
+
+def one(operand=None):
+    if operand is None:
+        return 1
+    if operand[0] == '+':
+        return operand[1] + 1
+    if operand[0] == '*':
+        return operand[1] * 1
+    if operand[0] == '//':
+        if 1 <= operand[1]:
+            return 1 // operand[1]
+        else:
+            return 0
+    if operand[0] == '-':
+        if 1 <= operand[1]:
+            return 1 - operand[1]
+        else:
+            return abs(1 - operand[1])
+
+
+def two(operand=None):
+    if operand is None:
+        return 2
+    if operand[0] == '+':
+        return operand[1] + 2
+    if operand[0] == '*':
+        return operand[1] * 2
+    if operand[0] == '//':
+        if 2 >= operand[1]:
+            return 2 // operand[1]
+        else:
+            return 0
+    if operand[0] == '-':
+        if 2 <= operand[1]:
+            return 2 - operand[1]
+        else:
+            return abs(2 - operand[1])
+
+
+def three(operand=None):
+    if operand is None:
+        return 3
+    if operand[0] == '+':
+        return operand[1] + 3
+    if operand[0] == '*':
+        return operand[1] * 3
+    if operand[0] == '//':
+        if 3 >= operand[1]:
+            return 3 // operand[1]
+        else:
+            return 0
+    if operand[0] == '-':
+        if 3 <= operand[1]:
+            return 3 - operand[1]
+        else:
+            return abs(3 - operand[1])
+
+
+def four(operand=None):
+    if operand is None:
+        return 4
+    if operand[0] == '+':
+        return operand[1] + 4
+    if operand[0] == '*':
+        return operand[1] * 4
+    if operand[0] == '//':
+        if 4 >= operand[1]:
+            return 4 // operand[1]
+        else:
+            return 0
+    if operand[0] == '-':
+        if 4 <= operand[1]:
+            return 4 - operand[1]
+        else:
+            return abs(4 - operand[1])
+
+
+def five(operand=None):
+    if operand is None:
+        return 5
+    if operand[0] == '+':
+        return operand[1] + 5
+    if operand[0] == '*':
+        return operand[1] * 5
+    if operand[0] == '//':
+        if 5 >= operand[1]:
+            return 5 // operand[1]
+        else:
+            return 0
+    if operand[0] == '-':
+        if 5 <= operand[1]:
+            return 5 - operand[1]
+        else:
+            return abs(5 - operand[1])
+
+
+def six(operand=None):
+    if operand is None:
+        return 6
+    if operand[0] == '+':
+        return operand[1] + 6
+    if operand[0] == '*':
+        return operand[1] * 6
+    if operand[0] == '//':
+        if 6 >= operand[1]:
+            return 6 // operand[1]
+        else:
+            return 0
+    if operand[0] == '-':
+        if 6 <= operand[1]:
+            return 6 - operand[1]
+        else:
+            return abs(6 - operand[1])
+
+
+def seven(operand=None):
+    if operand is None:
+        return 7
+    if operand[0] == '+':
+        return operand[1] + 7
+    if operand[0] == '*':
+        return operand[1] * 7
+    if operand[0] == '//':
+        if 7 >= operand[1]:
+            return 7 // operand[1]
+        else:
+            return 0
+    if operand[0] == '-':
+        if 7 <= operand[1]:
+            return 7 - operand[1]
+        else:
+            return abs(7 - operand[1])
+
+
+def eight(operand=None):
+    if operand is None:
+        return 8
+    if operand[0] == '+':
+        return operand[1] + 8
+    if operand[0] == '*':
+        return operand[1] * 8
+    if operand[0] == '//':
+        if 8 >= operand[1]:
+            return 8 // operand[1]
+        else:
+            return 0
+    if operand[0] == '-':
+        if 8 <= operand[1]:
+            return 8 - operand[1]
+        else:
+            return abs(8 - operand[1])
+
+
+def nine(operand=None):
+    if operand is None:
+        return 9
+    if operand[0] == '+':
+        return operand[1] + 9
+    if operand[0] == '*':
+        return operand[1] * 9
+    if operand[0] == '//':
+        if 9 >= operand[1]:
+            return 9 // operand[1]
+        else:
+            return 0
+    if operand[0] == '-':
+        if 9 <= operand[1]:
+            return 9 - operand[1]
+        else:
+            return abs(9 - operand[1])
+
+
+def plus(number):
+    return '+', number
+
+
+def minus(number):
+    return '-', number
+
+
+def times(number):
+    return '*', number
+
+
+def divided_by(number):
+    return '//', number
