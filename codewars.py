@@ -528,3 +528,32 @@ def times(number):
 
 def divided_by(number):
     return '//', number
+
+
+def create_phone_number(n):
+    # https://www.codewars.com/kata/525f50e3b73515a6db000b83/train/python
+    return f'({"".join([str(i) for i in n[0:3]])}) {"".join([str(i) for i in n[3:6]])}-{"".join([str(i) for i in n[6:10]])}'
+
+
+def create_phone_number2(n):
+    # https://www.codewars.com/kata/525f50e3b73515a6db000b83/train/python
+    return "({}{}{}) {}{}{}-{}{}{}{}".format(*n)
+
+
+def pig_it(text):
+    # https://www.codewars.com/kata/520b9d2ad5c005041100000f/train/python
+    return ' '.join([word[1:] + word[0] +
+                     'ay' if word not in '!?' else word for word in text.split(' ')])
+
+
+def digital_root(n):
+    # https://www.codewars.com/kata/541c8630095125aba6000c00/python
+    if len(str(n)) == 1:
+        return n
+
+    return digital_root(eval('+'.join(list(str(n)))))
+
+
+def digital_root2(n):
+    # https://www.codewars.com/kata/541c8630095125aba6000c00/python
+    return n if n < 10 else digital_root(sum(map(int, str(n))))
