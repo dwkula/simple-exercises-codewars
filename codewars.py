@@ -1,4 +1,5 @@
 # 8 kyu
+import string
 import itertools
 from collections import Counter
 from fractions import Fraction
@@ -602,3 +603,236 @@ class PaginationHelper:
 
         else:
             return -1
+
+
+def rgb(r, g, b):
+    # https://www.codewars.com/kata/513e08acc600c94f01000001/train/python
+    rh, gh, bh = hex(r)[2:], hex(g)[2:], hex(b)[2:]
+    if r < 0:
+        rh = '0'
+    if g < 0:
+        gh = '0'
+    if b < 0:
+        bh = '0'
+
+    if r > 255:
+        rh = 'FF'
+
+    if g > 255:
+        gh = 'FF'
+
+    if b > 255:
+        bh = 'FF'
+
+    if r < 10:
+        rh = '0' + rh
+    if g < 10:
+        gh = '0' + gh
+    if b < 10:
+        bh = '0' + bh
+
+    return f'{rh}{gh}{bh}'.upper()
+
+
+def rgb2(r, g, b):
+    # https://www.codewars.com/kata/513e08acc600c94f01000001/train/python
+    def round(x): return min(255, max(x, 0))
+    return ("{:02X}" * 3).format(round(r), round(g), round(b))
+
+
+def high(x):
+    # https://www.codewars.com/kata/57eb8fcdf670e99d9b000272/
+    letters = {c: i+1 for i, c in enumerate(string.ascii_lowercase)}
+    x_splt = x.split(' ')
+
+    best_score = 0
+    best_word = ''
+    for word in x_splt:
+        current_score = 0
+        for c in word:
+            current_score += letters[c]
+
+        if best_score < current_score:
+            best_score = current_score
+            best_word = word
+
+    return best_word
+
+
+def high2(x):
+    # https://www.codewars.com/kata/57eb8fcdf670e99d9b000272/
+    return max(x.split(), key=lambda k: sum(ord(c) - 96 for c in k))
+
+
+def to_camel_case(text):
+    # https://www.codewars.com/kata/517abf86da9663f1d2000003
+    if not text:
+        return ''
+    first_letter = text[0]
+    if '_' in text or '-' in text:
+        result = first_letter + text.title().replace(' ', '')[1:]
+
+        if '-' in result:
+            result = result.replace('-', '')
+
+        if '_' in result:
+            result = result.replace('_', '')
+
+    return result
+
+
+def to_camel_case2(s):
+    # https://www.codewars.com/kata/517abf86da9663f1d2000003
+    return s[0] + s.title().translate({45:  None, 95: None})[1:] if s else s
+
+
+def roman_numerals_encoder(n):
+    # https://www.codewars.com/kata/51b62bf6a9c58071c600001b/solutions/python/me/best_practice
+    values = {'I': 1, 'IV': 4, 'V': 5, 'IX': 9, 'X': 10, 'XL': 40, 'L': 50,
+              'XC': 90, 'C': 100, 'CD': 400, 'D': 500, 'CM': 900, 'M': 1000}
+
+    roman = ''
+    for key, value in reversed(values.items()):
+        for _ in range(3):
+            if n >= value:
+                roman += key
+                n -= value
+
+    return roman
+
+
+def fibonacci_it(n):
+    a, b = 0, 1
+    for i in range(n+1):
+        a, b = b, a + b
+        yield a
+
+
+def perimeter(n):
+    # https://www.codewars.com/kata/559a28007caad2ac4e000083/train/python
+    genfib = fibonacci_it(n)
+    squares = 0
+
+    for i in genfib:
+        squares += i
+
+    perimeters = squares * 4
+
+    return perimeters
+
+
+def find_outlier(integers):
+    # https://www.codewars.com/kata/5526fc09a1bbd946250002dc/python
+    evens = False
+    count = 0
+    for i in integers:
+        if i % 2 == 0:
+            count += 1
+        if count >= 2:
+            evens = True
+
+    if evens:
+        for i in integers:
+            if i % 2 != 0:
+                return i
+    else:
+        for i in integers:
+            if i % 2 == 0:
+                return i
+
+
+def find_outlier(int):
+    # https://www.codewars.com/kata/5526fc09a1bbd946250002dc/python
+    odds = [x for x in int if x % 2 != 0]
+    evens = [x for x in int if x % 2 == 0]
+    return odds[0] if len(odds) < len(evens) else evens[0]
+
+
+def nb_year(p0, percent, aug, p):
+    # https://www.codewars.com/kata/563b662a59afc2b5120000c6
+    years = 0
+
+    while p0 < p:
+        p0 = int(p0 + (p0 * (percent / 100.0)) + aug)
+        years += 1
+
+    return years
+
+
+def find_even_index(arr):
+    # https://www.codewars.com/kata/5679aa472b8f57fb8c000047
+    found = False
+    for index in range(len(arr)):
+        if sum(arr[:index]) == sum(arr[index+1:]):
+            found = True
+            return index
+
+    if not found:
+        return -1
+
+
+def narcissistic(value):
+    # https://www.codewars.com/kata/5287e858c6b5a9678200083c/
+    strvalue = str(value)
+    csum = 0
+    for c in strvalue:
+        csum += int(c) ** len(strvalue)
+
+    return csum == value
+
+
+def tribonacci(signature, n):
+    # https://www.codewars.com/kata/556deca17c58da83c00002db/
+    if n > 0:
+        for i in range(n - 3):
+            signature.append(sum(signature[-3:]))
+
+        if n < 3:
+            return signature[:n]
+
+        return signature
+
+    return []
+
+
+def anagrams(word, words):
+    # https://www.codewars.com/kata/523a86aa4230ebb5420001e1/
+    anagrams = []
+    word = Counter(word)
+    candidates = words
+    for candidate in candidates:
+        candidate_val = Counter(candidate)
+        if word == candidate_val:
+            anagrams.append(candidate)
+
+    return anagrams
+
+
+def longest(a1, a2):
+    # https://www.codewars.com/kata/5656b6906de340bd1b0000ac/
+    return ''.join(sorted(set(a1 + a2)))
+
+
+def is_prime_optimized(n):
+   # https://www.codewars.com/kata/5262119038c0985a5b00029f/solutions/python
+    if n < 2:
+        return False
+
+    for i in range(2, int(math.sqrt(n))+1):
+        if (n % i) == 0:
+            return False
+    return True
+
+
+def printer_error(s):
+    # https://www.codewars.com/kata/56541980fa08ab47a0000040/
+
+    numerator = 0
+    denumerator = 0
+    for k, v in Counter(s).items():
+        if k in 'abcdefghijklm':
+            denumerator += v
+        else:
+            numerator += v
+
+    return f'{numerator}/{denumerator + numerator}'
